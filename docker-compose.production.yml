@@ -11,6 +11,11 @@ services:
     env_file: .env
     volumes:
       - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   backend:
     image: romariotrain/kittygram_backend:latest
@@ -19,7 +24,9 @@ services:
       - static:/backend_static
       - media:/app/media
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    restart: always
 
   frontend:
     image: romariotrain/kittygram_frontend:latest
@@ -37,3 +44,4 @@ services:
     depends_on:
       - backend
       - frontend
+    restart: always
