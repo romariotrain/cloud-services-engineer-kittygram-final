@@ -13,7 +13,7 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   backend:
-    image: romamorozevich@yandex.ru/kittygram_backend:latest
+    image: romariotrain/kittygram_backend:latest
     env_file: .env
     volumes:
       - static:/backend_static
@@ -22,13 +22,13 @@ services:
       - db
 
   frontend:
-    image: romamorozevich@yandex.ru/kittygram_frontend:latest
+    image: romariotrain/kittygram_frontend:latest
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
 
   gateway:
-    image: romamorozevich@yandex.ru/kittygram_gateway:latest
+    image: romariotrain/kittygram_gateway:latest
     ports:
       - "9000:80"
     volumes:
