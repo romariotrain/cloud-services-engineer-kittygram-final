@@ -37,7 +37,7 @@ services:
   gateway:
     image: romariotrain/kittygram_gateway:latest
     ports:
-      - "9000:80"
+      - "80:80"
     volumes:
       - static:/static
       - media:/media
