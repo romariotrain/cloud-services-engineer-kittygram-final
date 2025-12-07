@@ -32,10 +32,7 @@ jobs:
         pip install -r ./backend/requirements.txt 
 
     - name: Test with flake8
-      run: |
-        cd backend
-        python -m isort . 
-        python -m flake8 backend/
+      run: python -m flake8 backend/
 
     - name: Test backend
       env:
