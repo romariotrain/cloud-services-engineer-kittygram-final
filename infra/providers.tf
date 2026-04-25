@@ -1,12 +1,10 @@
 terraform {
-  required_version = ">= 1.5.0"
-
   required_providers {
     yandex = {
-      source  = "yandex-cloud/yandex"
-      version = "~> 0.110"
+      source = "yandex-cloud/yandex"
     }
   }
+  required_version = ">= 0.13"
 
   backend "s3" {
     endpoints = {
@@ -24,8 +22,8 @@ terraform {
 }
 
 provider "yandex" {
-  token     = var.yc_token
-  cloud_id  = var.yc_cloud_id
-  folder_id = var.yc_folder_id
-  zone      = var.yc_zone
+  service_account_key_file = "authorized_key.json"
+  cloud_id                 = var.cloud_id
+  folder_id                = var.folder_id
+  zone                     = "ru-central1-a"
 }

@@ -1,27 +1,15 @@
-variable "yc_token" {
-  description = "Yandex Cloud OAuth or IAM token"
-  type        = string
-  sensitive   = true
-}
-
-variable "yc_cloud_id" {
-  description = "Yandex Cloud ID"
+variable "cloud_id" {
+  description = "Cloud ID"
   type        = string
 }
 
-variable "yc_folder_id" {
-  description = "Yandex Cloud folder ID"
+variable "folder_id" {
+  description = "Folder ID"
   type        = string
 }
 
-variable "yc_zone" {
-  description = "Default availability zone"
-  type        = string
-  default     = "ru-central1-a"
-}
-
-variable "ssh_public_key" {
-  description = "SSH public key for VM access"
+variable "ssh_key" {
+  description = "SSH Public Key"
   type        = string
 }
 

@@ -5,7 +5,7 @@ data "yandex_compute_image" "ubuntu" {
 resource "yandex_compute_instance" "kittygram" {
   name        = "kittygram-vm"
   platform_id = "standard-v3"
-  zone        = var.yc_zone
+  zone        = "ru-central1-a"
 
   resources {
     cores         = 2
@@ -29,9 +29,8 @@ resource "yandex_compute_instance" "kittygram" {
 
   metadata = {
     user-data = templatefile("${path.module}/cloud-init.yaml", {
-      ssh_public_key = var.ssh_public_key
+      ssh_key = var.ssh_key
     })
     serial-port-enable = "1"
   }
-
 }
