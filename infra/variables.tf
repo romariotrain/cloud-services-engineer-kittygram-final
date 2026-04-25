@@ -36,3 +36,15 @@ variable "bucket_name" {
   type        = string
   default     = "kittygram-app-romariotrain"
 }
+
+variable "s3_access_key" {
+  description = "Static access key for S3 bucket"
+  type        = string
+  sensitive   = true
+}
+
+variable "s3_secret_key" {
+  description = "Static secret key for S3 bucket"
+  type        = string
+  sensitive   = true
+}
